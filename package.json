@@ -1,0 +1,19 @@
+{
+  "name": "base-project",
+  "version": "1.0.0",
+  "description": "Base project with backend, frontend, and shared packages",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:frontend": "npm run start --workspace=packages/frontend",
+    "build": "npm run build --workspace=packages/backend && npm run build --workspace=packages/frontend",
+    "install:all": "npm install && npm install --workspace=packages/backend && npm install --workspace=packages/frontend && npm install --workspace=packages/shared"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
