@@ -32,12 +32,17 @@ app.listen(PORT, async () => {
   
   // Initialize database with sample data if using Supabase
   if (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
-    console.log('🗄️  Initializing database...');
+    console.log('🗄️ Initializing database...');
     try {
-      await databaseService.initializeSampleData();
-      console.log('✅ Database initialized successfully');
+      databaseService.canInitialize();
+      try {
+        await databaseService.initializeSampleData();
+        console.log('✅ Database initialized successfully');  
+      } catch (error) {
+        console.error('❌ Database sample-data initialization failed');
+      }
     } catch (error) {
-      console.error('❌ Database initialization failed:', error);
+      console.error('❌ Database not connected');
     }
   } else {
     console.log('📝 Using mock data - Supabase not configured');
