@@ -2,6 +2,37 @@
 
 A full-stack TypeScript monorepo with Express backend, React frontend, and Supabase database.
 
+## 🚀 Quick Start
+
+**Required tools:**
+- Node.js 22+ 
+- npm
+- Git
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd base-project
+
+# Install all dependencies
+npm run install:all
+
+# Build shared types package
+cd packages/shared && npm run build && cd ../..
+
+# Set up environment files
+cd packages/backend && cp .env.example .env
+cd ../frontend && cp .env.example .env && cd ../..
+
+# Start both frontend and backend
+npm run dev
+```
+
+**That's it!** 🎉
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:3001/api
+- Health check: http://localhost:3001/api/health
+
 ## 📋 Table of Contents
 
 - [🏗️ Architecture Overview](#️-architecture-overview)
@@ -40,11 +71,6 @@ Before starting, ensure you have accounts on:
 - [Supabase](https://supabase.com) (database)
 - [Render](https://render.com) (backend hosting)
 - [Netlify](https://netlify.com) (frontend hosting)
-
-**Required tools:**
-- Node.js 18+ 
-- npm or yarn
-- Git
 
 ---
 
