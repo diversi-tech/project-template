@@ -1,12 +1,13 @@
+import dotenv from 'dotenv';
+// Load environment variables
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import healthRoutes from './routes/health';
 import itemsRoutes from './routes/items';
 import { databaseService } from './services/database';
 
-// Load environment variables
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
