@@ -77,29 +77,26 @@ export class DatabaseService {
 
   // Initialize database with sample data if empty
   async initializeSampleData(): Promise<void> {
-    try {
-      const items = await this.getAllItems();
+    
+    const items = await this.getAllItems();
       
-      if (items.length === 0) {
-        console.log('Initializing database with sample data...');
-        
-        const sampleItems = [
-          { name: 'Laptop', type: 'Electronics', amount: 1200 },
-          { name: 'Coffee Beans', type: 'Food', amount: 25 },
-          { name: 'Office Chair', type: 'Furniture', amount: 350 },
-          { name: 'Notebook', type: 'Stationery', amount: 15 }
-        ];
+    if (items.length === 0) {
+      console.log('Initializing database with sample data...');
+      
+      const sampleItems = [
+        { name: 'Laptop', type: 'Electronics', amount: 1200 },
+        { name: 'Coffee Beans', type: 'Food', amount: 25 },
+        { name: 'Office Chair', type: 'Furniture', amount: 350 },
+        { name: 'Notebook', type: 'Stationery', amount: 15 }
+      ];
 
-        for (const item of sampleItems) {
-          await this.createItem(item);
-        }
-        
-        console.log('Sample data initialized successfully');
+      for (const item of sampleItems) {
+        await this.createItem(item);
       }
-    } catch (error) {
-      console.error('Error initializing sample data:', error);
-      // Don't throw here - let the app continue even if sample data fails
+      
+      console.log('Sample data initialized successfully');
     }
+  
   }
 }
 
